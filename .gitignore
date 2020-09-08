@@ -34,3 +34,4 @@
 # CMSSW
 CMSSW.*
 step.*
+*.root
