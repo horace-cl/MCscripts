@@ -10,7 +10,7 @@ cd CMSSW_10_2_20_UL/src
 eval `scram runtime -sh`
 
 pyfile="fragment.py"
-filter="oneParticleFilter"
+filter="OnlyOneParticleFilter"
 
 mkdir Configuration
 mkdir Configuration/GenProduction
