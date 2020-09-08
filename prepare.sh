@@ -46,7 +46,7 @@ cd ../../
 cmsDriver.py step1 --filein file:step0-GS-b_kmumu_PHSPS.root --fileout file:step1-DR-b_kmumu_PHSPS.root --pileup_input "dbs:/MinBias_TuneCP5_13TeV-pythia8/RunIIFall18GS-102X_upgrade2018_realistic_v9-v1/GEN-SIM" --mc --eventcontent FEVTDEBUGHLT --pileup "AVE_25_BX_25ns,{'N': 20}" --datatier GEN-SIM-DIGI-RAW --conditions 102X_upgrade2018_realistic_v15 --step DIGI,L1,DIGI2RAW,HLT:@relval2018 --nThreads 8 --geometry DB:Extended --era Run2_2018 --python_filename step1-DR-b_kmumu_PHSPS_cfg.py --no_exec --customise Configuration/DataProcessing/Utils.addMonitoring -n -1;
 sed -i "20 a from IOMC.RandomEngine.RandomServiceHelper import RandomNumberServiceHelper\nrandSvc = RandomNumberServiceHelper(process.RandomNumberGeneratorService)\nrandSvc.populate() " step1-DR-b_kmumu_PHSPS_cfg.py
 
-cmsDriver.py step2 --filein file:step1-DR-b_kmumu_PHSPS.root --fileout file:step2-DR-b_kmumu_PHSPS.root --mc --eventcontent AODSIM --runUnscheduled --datatier AODSIM --conditions 102X_upgrade2018_realistic_v15 --step RAW2DIGI,L1Reco,RECO,RECOSIM,EI --nThreads 8 --geometry DB:Extended --era Run2_2018 --python_filename step2-DR-b_kmumu_PHSPS_cfg.py --no_exec --customise Configuration/DataProcessing/Utils.addMonitoring -n -1;
+cmsDriver.py step2 --filein file:step1-DR-b_kmumu_PHSPS.root --fileout file:step2-DR-b_kmumu_PHSPS.root --mc --eventcontent AODSIM --runUnscheduled --datatier AODSIM --conditions 102X_upgrade2018_realistic_v15 --step RAW2DIGI,L1Reco,RECO,RECOSIM,EI --nThreads 8 --era Run2_2018,bParking --python_filename step2-DR-b_kmumu_PHSPS_cfg.py --no_exec --customise Configuration/DataProcessing/Utils.addMonitoring -n -1;
 sed -i "20 a from IOMC.RandomEngine.RandomServiceHelper import RandomNumberServiceHelper\nrandSvc = RandomNumberServiceHelper(process.RandomNumberGeneratorService)\nrandSvc.populate()" step2-DR-b_kmumu_PHSPS_cfg.py
 
 
@@ -63,7 +63,6 @@ cd CMSSW_10_2_14/src
 scram b
 cd ../../
 cmsDriver.py step1 --filein file:step2-DR-b_kmumu_PHSPS.root --fileout file:step3-MiniAOD-b_kmumu_PHSPS.root --mc --eventcontent MINIAODSIM --runUnscheduled --datatier MINIAODSIM --conditions 102X_upgrade2018_realistic_v15 --step PAT --nThreads 8 --geometry DB:Extended --era Run2_2018,bParking --python_filename step3-MiniAOD-b_kmumu_PHSPS_cfg.py --no_exec --customise Configuration/DataProcessing/Utils.addMonitoring -n -1;
-
 
 
 export SCRAM_ARCH=slc7_amd64_gcc700
