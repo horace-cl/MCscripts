@@ -30,9 +30,15 @@ then
 	cd $GEN_REL/src
 	eval `scram runtime -sh`
 
+	echo ""
+	echo "DOWNLOADING FILTERS"
+	echo ""
 	curl -s --insecure https://github.com/horace-cl/MCscripts/blob/master/OnlyOneParticleFilter.cc --retry 2 --create-dirs -o ./Configuration/GenProduction/plugins/OnlyOneParticleFilter.cc
 	curl -s --insecure https://github.com/horace-cl/MCscripts/blob/master/OnlyOneParticleFilter.h --retry 2 --create-dirs -o ./Configuration/GenProduction/plugins/OnlyOneParticleFilter.h
 	curl -s --insecure https://github.com/horace-cl/MCscripts/blob/master/BuildFile.xml --retry 2 --create-dirs -o ./Configuration/GenProduction/plugins/BuildFile.xml
+	echo ""
+	echo "FILTERS DOWNLOADED"
+	echo ""
 
 	scram b
 	cd ../../
