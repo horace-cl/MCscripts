@@ -21,6 +21,7 @@ config.General.transferOutputs = True
 config.General.transferLogs = False
 config.General.workArea = 'crab_'+step+'-'+channel
 
+config.JobType.allowUndistributedCMSSW = True
 config.JobType.pluginName = 'PrivateMC'
 config.JobType.psetName = myrun
 config.JobType.inputFiles = ['step1-DR-'+channel+'_cfg.py',
