@@ -1,4 +1,4 @@
-#!/bin/bash
+ #!/bin/bash
 
 START=$1
 
@@ -31,8 +31,8 @@ then
 	cd ../../
 
 	echo "==================== PB: CMSRUN starting Gen step ===================="
-	#cmsRun -j ${CHANNEL_DECAY}_step0.log  -p PSet.py
-	cmsRun -j ${CHANNEL_DECAY}_step0.log -p step0-GS-${CHANNEL_DECAY}_cfg.py
+	cmsRun -j ${CHANNEL_DECAY}_step0.log  -p PSet.py
+	#cmsRun -j ${CHANNEL_DECAY}_step0.log -p step0-GS-${CHANNEL_DECAY}_cfg.py
 fi
 
 
@@ -96,6 +96,10 @@ then
 fi
 
 
+
+
+
+
 if [ $1 -le 4 ];
 then
 	echo "\n\n==================== cmssw environment prepration NanoAOD format ====================\n\n"
@@ -112,9 +116,11 @@ then
 	cd ../../
 
 	echo "==================== PB: CMSRUN starting step 4 ===================="
-	cmsRun -e -j ${CHANNEL_DECAY}_step4.log  step4-NanoAOD-${CHANNEL_DECAY}_cfg.py
+	#cmsRun -e -j ${CHANNEL_DECAY}_step4.log  step4-NanoAOD-${CHANNEL_DECAY}_cfg.py
+	cmsRun -e -j FrameworkJobReport.xml step4-NanoAOD-${CHANNEL_DECAY}_cfg.py
 	#cleaning
 	#rm -rfv step2-DR-${CHANNEL_DECAY}.root
+	
 fi
 
 echo "\n------------\n------------ AT LEAST"
