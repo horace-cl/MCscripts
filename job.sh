@@ -90,7 +90,8 @@ fi
 if [ $START -le 3 ];
 then
 	echo "================= PB: CMSRUN starting step 3 ===================="
-	cmsRun -e -j ${CHANNEL_DECAY}_step3.log  step3-MiniAOD-${CHANNEL_DECAY}_cfg.py
+	#cmsRun -e -j ${CHANNEL_DECAY}_step3.log  step3-MiniAOD-${CHANNEL_DECAY}_cfg.py
+	cmsRun -e -j FrameworkJobReport.xml  step3-MiniAOD-${CHANNEL_DECAY}_cfg.py
 	#cleaning
 	#rm -rfv step2-DR-${CHANNEL_DECAY}.root
 fi
@@ -100,27 +101,27 @@ fi
 
 
 
-if [ $START -le 4 ];
-then
-	echo "\n\n==================== cmssw environment prepration NanoAOD format ====================\n\n"
-	if [ -r $NANO_REL/src ] ; then
-	  echo release $NANO_REL already exists
-	else
-	  scram p $NANO_REL
-	fi
+# if [ $START -le 4 ];
+# then
+# 	echo "\n\n==================== cmssw environment prepration NanoAOD format ====================\n\n"
+# 	if [ -r $NANO_REL/src ] ; then
+# 	  echo release $NANO_REL already exists
+# 	else
+# 	  scram p $NANO_REL
+# 	fi
 
-	cd $NANO_REL/src
-	eval `scram runtime -sh`
-	#scram b distclean && scram b vclean && scram b clean
-	scram b
-	cd ../../
+# 	cd $NANO_REL/src
+# 	eval `scram runtime -sh`
+# 	#scram b distclean && scram b vclean && scram b clean
+# 	scram b
+# 	cd ../../
 
-	echo "==================== PB: CMSRUN starting step 4 ===================="
-	#cmsRun -e -j ${CHANNEL_DECAY}_step4.log  step4-NanoAOD-${CHANNEL_DECAY}_cfg.py
-	cmsRun -e -j FrameworkJobReport.xml step4-NanoAOD-${CHANNEL_DECAY}_cfg.py
-	#cleaning
-	#rm -rfv step2-DR-${CHANNEL_DECAY}.root
+# 	echo "==================== PB: CMSRUN starting step 4 ===================="
+# 	#cmsRun -e -j ${CHANNEL_DECAY}_step4.log  step4-NanoAOD-${CHANNEL_DECAY}_cfg.py
+# 	cmsRun -e -j FrameworkJobReport.xml step4-NanoAOD-${CHANNEL_DECAY}_cfg.py
+# 	#cleaning
+# 	#rm -rfv step2-DR-${CHANNEL_DECAY}.root
 	
-fi
+# fi
 
 echo "\n------------\n------------ AT LEAST"
