@@ -35,6 +35,10 @@
 CMSSW.*
 step.*
 *.root
+crab*
 
 #python
 *.pyc
+
+#logs
+*.log
