@@ -28,18 +28,18 @@ config.JobType.inputFiles = ['step1-DR-'+channel+'_cfg.py',
                              'step2-DR-'+channel+'_cfg.py',
                              'step3-MiniAOD-'+channel+'_cfg.py',
                              'step4-NanoAOD-'+channel+'_cfg.py']
-config.JobType.disableAutomaticOutputCollection = False
+config.JobType.disableAutomaticOutputCollection = True
 config.JobType.eventsPerLumi = 10000
 config.JobType.numCores = 1
 config.JobType.maxMemoryMB = 2500
 config.JobType.scriptExe = 'job.sh'
 #config.JobType.scriptArgs = ["0"]
-#config.JobType.outputFiles = ['step0-GS-b_kmumu_PHSPS.root', 'step3-MiniAOD-b_kmumu_PHSPS.root', 'step4-NanoAOD-b_kmumu_PHSPS.root']
+config.JobType.outputFiles = ['step0-GS-b_kmumu_PHSPS.root', 'step3-MiniAOD-b_kmumu_PHSPS.root', 'step4-NanoAOD-b_kmumu_PHSPS.root']
 config.Data.outputPrimaryDataset = myname
 config.Data.splitting = 'EventBased'
 config.Data.unitsPerJob = nEvents
 config.Data.totalUnits = config.Data.unitsPerJob * NJOBS
-config.Data.outLFNDirBase = '/store/user/hcrottel/'
+#config.Data.outLFNDirBase = '/store/user/hcrottel/'
 config.Data.publication = False
 
 config.Site.storageSite = 'T2_CH_CERNBOX'

@@ -14,6 +14,8 @@ CHANNEL_DECAY="b_kmumu_PHSPS"
 
 
 
+
+
 if [ $START -le 0 ];
 then
 	echo "\n\n==================== cmssw environment prepration Gen step ====================\n\n"
@@ -27,6 +29,11 @@ then
 	fi
 	cd $GEN_REL/src
 	eval `scram runtime -sh`
+
+	curl -s --insecure https://github.com/horace-cl/MCscripts/blob/master/OnlyOneParticleFilter.cc --retry 2 --create-dirs -o ./Configuration/GenProduction/plugins/OnlyOneParticleFilter.cc
+	curl -s --insecure https://github.com/horace-cl/MCscripts/blob/master/OnlyOneParticleFilter.h --retry 2 --create-dirs -o ./Configuration/GenProduction/plugins/OnlyOneParticleFilter.h
+	curl -s --insecure https://github.com/horace-cl/MCscripts/blob/master/BuildFile.xml --retry 2 --create-dirs -o ./Configuration/GenProduction/plugins/BuildFile.xml
+
 	scram b
 	cd ../../
 
