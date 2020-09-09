@@ -89,7 +89,7 @@ eval `scram runtime -sh`
 scram b
 cd ../../
 
-echo "================= PB: CMSRUN starting step 3 ===================="
-cmsRun -e -j ${CHANNEL_DECAY}_step3.log  step3-MiniAOD-${CHANNEL_DECAY}_cfg.py
+echo "================= PB: CMSRUN starting step 4 ===================="
+cmsRun -e -j ${CHANNEL_DECAY}_step4.log  step4-NanoAOD-${CHANNEL_DECAY}_cfg.py
 #cleaning
 #rm -rfv step2-DR-${CHANNEL_DECAY}.root
