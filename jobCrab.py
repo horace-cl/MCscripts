@@ -39,7 +39,7 @@ config.Data.outputPrimaryDataset = myname
 config.Data.splitting = 'EventBased'
 config.Data.unitsPerJob = nEvents
 config.Data.totalUnits = config.Data.unitsPerJob * NJOBS
-#config.Data.outLFNDirBase = '/store/user/cmondrag/'
+config.Data.outLFNDirBase = '/store/user/hcrottel/'
 config.Data.publication = False
 
 config.Site.storageSite = 'T2_CH_CERNBOX'
