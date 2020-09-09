@@ -12,7 +12,7 @@ year = '2020'
 step = 'PrivateMC-'+year
 nEvents = 1000
 NJOBS = 10
-myrun = f"step0-GS-{CHANNEL_DECAY}_cfg.py"
+myrun = "step0-GS-"+channel+"_cfg.py"
 #myrun = 'step0-GS-ups2s2ups1spipi_cfg.py'
 myname = step+'-'+channel
 
@@ -23,10 +23,10 @@ config.General.workArea = 'crab_'+step+'-'+channel
 
 config.JobType.pluginName = 'PrivateMC'
 config.JobType.psetName = myrun
-config.JobType.inputFiles = ['step1-DR-{CHANNEL_DECAY}_cfg.py',
-                             'step2-DR-{CHANNEL_DECAY}_cfg.py',
-                             'step3-MiniAOD-{CHANNEL_DECAY}_cfg.py',
-                             'step4-NanoAOD-${CHANNEL_DECAY}_cfg.py']
+config.JobType.inputFiles = ['step1-DR-'+channel+'_cfg.py',
+                             'step2-DR-'+channel+'_cfg.py',
+                             'step3-MiniAOD-'+channel+'_cfg.py',
+                             'step4-NanoAOD-$'+channel+'_cfg.py']
 config.JobType.disableAutomaticOutputCollection = True
 config.JobType.eventsPerLumi = 10000
 config.JobType.numCores = 1
