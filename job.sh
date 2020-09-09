@@ -1,12 +1,20 @@
 #!/bin/bash
+
 SCRAM="slc7_amd64_gcc700"
+
+#RELEASE FOR EVERY STEP
+#NOTE! AOD STEP REQUIRES SAME RELEASE W.R.T MINIAOD
+#AT LEAST FOR THIS MC PRODUCTION
 GEN_REL="CMSSW_10_2_20_UL"
 RECO_REL="CMSSW_10_2_13_patch1"
 MINI_REL="CMSSW_10_2_14"
 NANO_REL="CMSSW_10_2_22"
 CHANNEL_DECAY="b_kmumu_PHSPS"
 
-echo "================= cmssw environment prepration Gen step ===================="
+
+
+
+echo "\n\n==================== cmssw environment prepration Gen step ====================\n\n"
 source /cvmfs/cms.cern.ch/cmsset_default.sh
 export SCRAM_ARCH=$SCRAM
 
@@ -20,14 +28,20 @@ eval `scram runtime -sh`
 scram b
 cd ../../
 
-
-echo "================= PB: CMSRUN starting Gen step ===================="
+echo "==================== PB: CMSRUN starting Gen step ===================="
 #cmsRun -j ${CHANNEL_DECAY}_step0.log  -p PSet.py
 cmsRun -j ${CHANNEL_DECAY}_step0.log -p step0-GS-${CHANNEL_DECAY}_cfg.py
 
 
 
-echo "================= cmssw environment prepration Reco step ===================="
+
+
+
+
+
+
+
+echo "\n\n==================== cmssw environment prepration Reco step ====================\n\n"
 
 if [ -r $RECO_REL/src ] ; then
   echo release $RECO_REL already exists
@@ -39,24 +53,19 @@ eval `scram runtime -sh`
 scram b
 cd ../../
 
-
-
-
-echo "================= PB: CMSRUN starting Reco step ===================="
+echo "==================== PB: CMSRUN starting Reco step ===================="
 cmsRun -e -j ${CHANNEL_DECAY}_step1.log step1-DR-${CHANNEL_DECAY}_cfg.py
 #cleaning
 #rm -rfv step0-GS-${CHANNEL_DECAY}.root
 
-echo "================= PB: CMSRUN starting Reco step 2 ===================="
-cmsRun -e -j ${CHANNEL_DECAY}_step2.log  step2-DR-${CHANNEL_DECAY}_cfg.py
-#cleaning
-#rm -rfv step1-DR-${CHANNEL_DECAY}.root
 
 
 
 
 
-echo "================= cmssw environment prepration MiniAOD format ===================="
+
+
+echo "\n\n==================== cmssw environment prepration AOD-MiniAOD format ====================\n\n"
 if [ -r $MINI_REL/src ] ; then
   echo release $MINI_REL already exists
 else
@@ -69,6 +78,12 @@ eval `scram runtime -sh`
 scram b
 cd ../../
 
+
+echo "================= PB: CMSRUN starting Reco step 2 ===================="
+cmsRun -e -j ${CHANNEL_DECAY}_step2.log step2-DR-${CHANNEL_DECAY}_cfg.py
+
+
+
 echo "================= PB: CMSRUN starting step 3 ===================="
 cmsRun -e -j ${CHANNEL_DECAY}_step3.log  step3-MiniAOD-${CHANNEL_DECAY}_cfg.py
 #cleaning
@@ -76,7 +91,7 @@ cmsRun -e -j ${CHANNEL_DECAY}_step3.log  step3-MiniAOD-${CHANNEL_DECAY}_cfg.py
 
 
 
-echo "================= cmssw environment prepration NanoAOD format ===================="
+echo "\n\n==================== cmssw environment prepration NanoAOD format ====================\n\n"
 if [ -r $NANO_REL/src ] ; then
   echo release $NANO_REL already exists
 else
@@ -89,7 +104,7 @@ eval `scram runtime -sh`
 scram b
 cd ../../
 
-echo "================= PB: CMSRUN starting step 4 ===================="
+echo "==================== PB: CMSRUN starting step 4 ===================="
 cmsRun -e -j ${CHANNEL_DECAY}_step4.log  step4-NanoAOD-${CHANNEL_DECAY}_cfg.py
 #cleaning
 #rm -rfv step2-DR-${CHANNEL_DECAY}.root
