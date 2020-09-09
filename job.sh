@@ -1,6 +1,6 @@
  #!/bin/bash
 
-START=$1
+START=0
 
 SCRAM="slc7_amd64_gcc700"
 #RELEASE FOR EVERY STEP
@@ -14,7 +14,7 @@ CHANNEL_DECAY="b_kmumu_PHSPS"
 
 
 
-if [ $1 -le 0 ];
+if [ $START -le 0 ];
 then
 	echo "\n\n==================== cmssw environment prepration Gen step ====================\n\n"
 	source /cvmfs/cms.cern.ch/cmsset_default.sh
@@ -41,7 +41,7 @@ fi
 
 
 
-if [ $1 -le 1 ];
+if [ $START -le 1 ];
 then
 	echo "\n\n==================== cmssw environment prepration Reco step ====================\n\n"
 
@@ -66,7 +66,7 @@ fi
 
 
 
-if [ $1 -le 2 ];
+if [ $START -le 2 ];
 then
 	echo "\n\n==================== cmssw environment prepration AOD-MiniAOD format ====================\n\n"
 	if [ -r $MINI_REL/src ] ; then
@@ -87,7 +87,7 @@ then
 fi
 
 
-if [ $1 -le 3 ];
+if [ $START -le 3 ];
 then
 	echo "================= PB: CMSRUN starting step 3 ===================="
 	cmsRun -e -j ${CHANNEL_DECAY}_step3.log  step3-MiniAOD-${CHANNEL_DECAY}_cfg.py
@@ -100,7 +100,7 @@ fi
 
 
 
-if [ $1 -le 4 ];
+if [ $START -le 4 ];
 then
 	echo "\n\n==================== cmssw environment prepration NanoAOD format ====================\n\n"
 	if [ -r $NANO_REL/src ] ; then
