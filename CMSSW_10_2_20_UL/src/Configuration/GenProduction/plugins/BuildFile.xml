@@ -1,6 +1,0 @@
-<use   name="FWCore/ParameterSet"/>
-<use   name="FWCore/Framework"/>
-<use   name="SimDataFormats/GeneratorProducts"/>
-<use   name="pythia8"/>
-
-<flags EDM_PLUGIN="1"/>

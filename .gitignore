@@ -33,6 +33,7 @@
 
 # CMSSW
 CMSSW.*
+CMSSW*
 step.*
 *.root
 crab*

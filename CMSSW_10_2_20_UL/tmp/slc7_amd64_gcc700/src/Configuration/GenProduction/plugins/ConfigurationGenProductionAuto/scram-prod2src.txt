@@ -1,1 +1,0 @@
-ConfigurationGenProductionAuto Configuration/GenProduction/plugins/OnlyOneParticleFilter.cc

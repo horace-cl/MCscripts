@@ -1,4 +1,0 @@
-tmp/slc7_amd64_gcc700/src/Configuration/GenProduction/plugins/ConfigurationGenProductionAuto/OnlyOneParticleFilter.cc.o: \
- src/Configuration/GenProduction/plugins/OnlyOneParticleFilter.cc \
- src/Configuration/GenProduction/plugins/OnlyOneParticleFilter.h \
-
